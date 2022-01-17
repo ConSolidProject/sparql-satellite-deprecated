@@ -1,0 +1,20 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat%23>
+PREFIX bcf: <https://dc.rwth-aachen.de/bcf%23>
+prefix lbd: <https://lbdserver.org/vocabulary%23>
+SELECT ?s ?mod ?url ?g
+WHERE {GRAPH ?g {
+    ?s a lbd:Image; dct:modified ?mod; dcat:distribution/dcat:downloadURL ?url.
+}}
+
+
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX bcf: <https://dc.rwth-aachen.de/bcf#>
+prefix lbd: <https://lbdserver.org/vocabulary#>
+
+SELECT ?s ?mod ?url
+FROM <http://localhost:5000/arch/lbd/duplex/local/datasets/c9046b67-cdf5-421a-86a1-a42a7f274368/>
+WHERE {
+    ?s a lbd:Image; dct:modified ?mod; dcat:distribution/dcat:downloadURL ?url.
+}
