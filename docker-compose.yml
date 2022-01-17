@@ -10,7 +10,7 @@ services:
       - ./src:/satellite-sparql/src
       - ./node_modules:/satellite-sparql/node_modules
     depends_on:
-      - mongo-lbd
+      - fuseki-lbd
     command: npm run docker:dev
     network_mode: host
   fuseki-lbd:

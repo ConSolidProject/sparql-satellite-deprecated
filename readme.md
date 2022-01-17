@@ -5,4 +5,9 @@ The satellite should be kept closely to the Pod itself as it requires extensive 
 
 To allow a checking of access rights, we currently only support a subset of SPARQL queries, namely those which contain a direct reference to (1) the graphs that should be queried (FROM, FROM NAMED) or including a GRAPH variable (e.g.: ?g) in the query. 
 
-A docker-compose.yml configuration is present, which directly spins up a Fuseki server along with the SPARQL satellite. Run `docker-compose up`. 
+A docker-compose.yml configuration is present, which directly spins up a Fuseki server along with the SPARQL satellite. Run `docker-compose up`. The Solid Server is to be started separately (TBD: include in Docker Compose). 
+
+The configuration makes use of environment variables. A template is provided as .env.template. Note the following: 
+* The satellite needs to be able to authenticate to the Pod. Therefore, the configuration should contain the resulting JSON object of the action  `npx @inrupt/generate-oidc-token`. This token will be of the form `CREDS={  "refreshToken" : "theRefreshToken",  "clientId"     : "theClientId",  "clientSecret" : "theClientSecret",  "oidcIssuer"   : "http://localhost:5000/"}`
+* To enable (1) the mirroring of resources at startup of the satellite and (2) remaining in sync with the changes on the Pod, it is necessary that the environment variable `SOCKETS_ACTIVE` is set to true. 
+* The SPARQL endpoint (Fuseki) needs to be protected as well; the environment variables contain the credentials for an admin. 
