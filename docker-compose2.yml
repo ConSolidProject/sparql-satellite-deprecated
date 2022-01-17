@@ -1,0 +1,42 @@
+version: '3'
+services:
+  satellite-lbd2:
+    container_name: satellite-sparql2
+    restart: always
+    build: .
+    env_file:
+      - 2.env
+    volumes:
+      - ./src:/satellite-sparql/src
+      - ./node_modules:/satellite-sparql/node_modules
+    depends_on:
+      - mongo-lbd2
+      - fuseki-lbd2
+    command: npm run docker:dev
+    network_mode: host
+  mongo-lbd2:
+    container_name: mongo-lbd2
+    image: mongo:4.4.11-rc0-focal
+    env_file:
+      - 2.env
+    logging:
+      driver: none
+    ports:
+      - '27015:27017'
+  fuseki-lbd2:
+    ports:
+        - '4030:3030'
+    container_name: fuseki-lbd2
+    logging:
+      driver: none
+    env_file:
+      - 2.env
+    image: secoresearch/fuseki
+  # css:
+  #   container_name: css
+  #   restart: always
+  #   build: ./css
+  #   volumes:
+  #     - ./css:/usr/src/css
+  #   ports: 
+  #     - '5000:5000'
