@@ -13,15 +13,6 @@ services:
       - mongo-lbd
     command: npm run docker:dev
     network_mode: host
-  mongo-lbd:
-    container_name: mongo-lbd
-    image: mongo:4.4.11-rc0-focal
-    env_file:
-      - .env
-    logging:
-      driver: none
-    ports:
-      - '27016:27017'
   fuseki-lbd:
     ports:
         - '3030:3030'
