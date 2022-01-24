@@ -1,0 +1,18 @@
+PREFIX lbd: <https://lbdserver.org/vocabulary#> 
+
+select ?concept ?ds ?id
+where {
+	?concept a lbd:Concept ; lbd:hasReference ?ref1, ?ref2.
+  	?ref1 lbd:inDataset ?ds1; lbd:hasIdentifier/lbd:identifier "3Y4YRln2r91vflHcHE5ITs" .
+  	?ref2 lbd:inDataset ?ds2; lbd:hasIdentifier/lbd:identifier ?id .
+}
+
+
+PREFIX lbd: <https://lbdserver.org/vocabulary#> 
+
+select ?concept ?ds ?id
+where {
+	?concept a lbd:Concept ; lbd:hasReference ?ref1, ?ref2.
+  	?ref1 lbd:inDataset ?ds1; lbd:hasIdentifier/lbd:identifier "1$IifB$Hb8QO1wV47lTx2C" .
+  	?ref2 lbd:inDataset ?ds2; lbd:hasIdentifier/lbd:identifier ?id .
+}

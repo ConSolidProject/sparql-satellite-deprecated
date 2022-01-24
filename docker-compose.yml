@@ -1,27 +1,28 @@
 version: '3'
 services:
-  satellite-lbd:
-    container_name: satellite-sparql
-    restart: always
-    build: .
-    env_file:
-      - .env
-    volumes:
-      - ./src:/satellite-sparql/src
-      - ./node_modules:/satellite-sparql/node_modules
-    depends_on:
-      - fuseki-lbd
-    command: npm run docker:dev
-    network_mode: host
+  # satellite-lbd:
+  #   container_name: satellite-sparql
+  #   restart: always
+  #   build: .
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./src:/satellite-sparql/src
+  #     - ./node_modules:/satellite-sparql/node_modules
+  #   depends_on:
+  #     - fuseki-lbd
+  #   command: npm run docker:dev
+  #   network_mode: host
   fuseki-lbd:
     ports:
         - '3030:3030'
     container_name: fuseki-lbd
-    logging:
-      driver: none
+    # logging:
+    #   driver: none
     env_file:
       - .env
     image: secoresearch/fuseki
+    
   # css:
   #   container_name: css
   #   restart: always
